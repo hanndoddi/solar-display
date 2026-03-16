@@ -31,7 +31,8 @@ jobs:
           ENPHASE_PASSWORD:      ${{ secrets.ENPHASE_PASSWORD }}
           ENPHASE_SYSTEM_ID:     ${{ secrets.ENPHASE_SYSTEM_ID }}
           GITHUB_TOKEN:          ${{ secrets.GITHUB_TOKEN }}
-          REPO_NAME:             ${{ github.repository }}        run: python fetch_solar.py
+          REPO_NAME:             ${{ github.repository }}       
+        run: python fetch_solar.py
 
       - name: Commit data.json
         run: |
