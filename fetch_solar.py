@@ -1,9 +1,9 @@
 import os, json, requests
 from datetime import datetime, timezone
 
-API_KEY       = os.environ["ENPHASE_API_KEY"]
-ACCESS_TOKEN  = os.environ["ENPHASE_ACCESS_TOKEN"]
-SYSTEM_ID     = os.environ["ENPHASE_SYSTEM_ID"]
+API_KEY      = os.environ["ENPHASE_API_KEY"].strip()
+ACCESS_TOKEN = os.environ["ENPHASE_ACCESS_TOKEN"].strip()
+SYSTEM_ID    = os.environ["ENPHASE_SYSTEM_ID"].strip()
 
 # Fetch solar data
 headers = {"Authorization": f"Bearer {ACCESS_TOKEN}"}
