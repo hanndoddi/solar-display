@@ -1,0 +1,42 @@
+name: Fetch Solar Data
+
+on:
+  schedule:
+    - cron: '0 */2 * * *'
+  workflow_dispatch:
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests PyGithub
+
+      - name: Fetch data and refresh token
+        env:
+          ENPHASE_API_KEY:       ${{ secrets.ENPHASE_API_KEY }}
+          ENPHASE_CLIENT_ID:     ${{ secrets.ENPHASE_CLIENT_ID }}
+          ENPHASE_CLIENT_SECRET: ${{ secrets.ENPHASE_CLIENT_SECRET }}
+          ENPHASE_REFRESH_TOKEN: ${{ secrets.ENPHASE_REFRESH_TOKEN }}
+          ENPHASE_SYSTEM_ID:     ${{ secrets.ENPHASE_SYSTEM_ID }}
+          GITHUB_TOKEN:          ${{ secrets.GITHUB_TOKEN }}
+          REPO_NAME:             ${{ github.repository }}
+        run: python fetch_solar.py
+
+      - name: Commit data.json
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add data.json
+          git diff --staged --quiet || git commit -m "Update solar data"
+          git push
