@@ -24,13 +24,11 @@ jobs:
 
       - name: Fetch data and refresh token
         env:
-          ENPHASE_API_KEY:       ${{ secrets.ENPHASE_API_KEY }}
-          ENPHASE_CLIENT_ID:     ${{ secrets.ENPHASE_CLIENT_ID }}
-          ENPHASE_CLIENT_SECRET: ${{ secrets.ENPHASE_CLIENT_SECRET }}
-          ENPHASE_REFRESH_TOKEN: ${{ secrets.ENPHASE_REFRESH_TOKEN }}
-          ENPHASE_SYSTEM_ID:     ${{ secrets.ENPHASE_SYSTEM_ID }}
-          GITHUB_TOKEN:          ${{ secrets.GITHUB_TOKEN }}
-          REPO_NAME:             ${{ github.repository }}
+          ENPHASE_API_KEY:      ${{ secrets.ENPHASE_API_KEY }}
+          ENPHASE_ACCESS_TOKEN: ${{ secrets.ENPHASE_ACCESS_TOKEN }}
+          ENPHASE_SYSTEM_ID:    ${{ secrets.ENPHASE_SYSTEM_ID }}
+          GITHUB_TOKEN:         ${{ secrets.GITHUB_TOKEN }}
+          REPO_NAME:            ${{ github.repository }}
         run: python fetch_solar.py
 
       - name: Commit data.json
