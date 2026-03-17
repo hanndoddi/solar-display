@@ -19,6 +19,8 @@
   <div class="unit">vatt(W)</div>
   <div class="time" id="time">næ í...</div>
   <div id="logTable"></div>
+  <script src="js/solarlog.js"></script>
+  <script src="js/displog.js"></script>
   <script>
     function load() {
       fetch('https://solar-proxy.hanndoddi.workers.dev')
@@ -35,7 +37,5 @@
     load();
     setInterval(load, 60000); // refresh every minute
   </script>
-  <script src="js/solarlog.js"></script>
-  <script src="js/displog.js"></script>
 </body>
 </html>
