@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mentaskólinn Solar Display</title>
   <style>
-    body { background: #375e71ff; font-family: sans-serif; max-width: 400px; margin: 3rem auto; padding: 1rem; text-align: center; }
+    body { background: #375e71ff; font-family: sans-serif; max-width: 800px; margin: 3rem auto; padding: 1rem; text-align: center; }
     h1 { color: #e67e22; }
     .power { font-size: 4rem; font-weight: bold; color: #2ecc71; margin: 1rem 0; }
     .unit  { font-size: 1.5rem; color: #d1d1d4; }
@@ -38,9 +38,12 @@ tr:nth-child(even) {
   <div class="power" id="power">--</div>
   <div class="unit">vatt(W)</div>
   <div class="time" id="time">næ í...</div>
+    <div id="peak">Top gildi: - W</div>
   <div id="logTable"></div>
   <script src="js/solarlog.js"></script>
   <script src="js/displog.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<canvas id="solarChart" width="800" height="400"></canvas>
 <script>
     function load() {
       fetch('https://solar-proxy.hanndoddi.workers.dev/today?public=true')
