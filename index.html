@@ -21,7 +21,7 @@
 
   <script>
     function load() {
-      fetch('https://enlighten.enphaseenergy.com/app-api/6051096/get_latest_power')
+      fetch('https://enlighten.enphaseenergy.com/pv/public_systems/hJd56051096/get_latest_power?public=true')
         .then(r => r.json())
         .then(d => {
           document.getElementById('power').textContent = d.latest_power.value;
