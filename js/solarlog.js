@@ -12,14 +12,14 @@ async function fetchSolarData() {
 }
 
 // Log solar data to backend and refresh the table
-async function logSolarData() {
-  const entry = await fetchSolarData();
-  await fetch(`${API_ROOT}/log`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(entry)
-  });
-  fetchLogHistory();
+async function fetchSolarData() {
+  const res = await fetch(`${API_ROOT}/today?public=true`);
+  const data = await res.json();
+  return {
+    timestamp: new Date().toLocaleString('is-IS'),
+    power: data.latest_power?.value ?? '',      
+    energy: ''                                  
+  };
 }
 
 // Fetch log history from backend

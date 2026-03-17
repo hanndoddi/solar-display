@@ -21,9 +21,9 @@
   <div id="logTable"></div>
   <script src="js/solarlog.js"></script>
   <script src="js/displog.js"></script>
-  <script>
+<script>
     function load() {
-      fetch('https://solar-proxy.hanndoddi.workers.dev')
+      fetch('https://solar-proxy.hanndoddi.workers.dev/today?public=true')
         .then(r => r.json())
         .then(d => {
           document.getElementById('power').textContent = d.latest_power.value;
