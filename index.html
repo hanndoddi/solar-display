@@ -13,7 +13,7 @@
   </style>
 </head>
 <body>
-  <h1>☀️ Mentasólin á Ísafirði</h1>
+  <h1>☀️ Menntasólin á Ísafirði</h1>
   <p>Núverandi orka</p>
   <div class="power" id="power">--</div>
   <div class="unit">vatt(W)</div>
@@ -21,7 +21,7 @@
 
   <script>
     function load() {
-      fetch('https://enlighten.enphaseenergy.com/pv/public_systems/hJd56051096/get_latest_power?public=true')
+      fetch('https://solar-proxy.hanndoddi.workers.dev')
         .then(r => r.json())
         .then(d => {
           document.getElementById('power').textContent = d.latest_power.value;
