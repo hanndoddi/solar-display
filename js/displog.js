@@ -1,4 +1,5 @@
 function renderLogTable(log) {
+log = (log || []).slice(-20).reverse();
   let html = "<table border='1'><tr><th>Tími</th><th>Afl</th><th>Orka</th></tr>";
   log.forEach(entry => {
     html += `<tr>
