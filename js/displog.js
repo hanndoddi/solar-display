@@ -70,8 +70,7 @@ function renderDayChart(production, startTime, intervalSecs) {
   // Build labels for all 96 intervals
   const allLabels = production.map((_, i) => {
     const ts = (startTime + i * intervalSecs) * 1000;
-    return new Date(ts).toLocaleTimeString('is-IS', { hour: '2-digit', minute: '2-digit' });
-  });
+    return new Date(ts).toLocaleTimeString('is-IS', { hour: '2-digit', minute: '2-digit', hour12: false });  });
 
   // --- Chart 1: trimmed to active hours (first → last non-zero) ---
   const firstActive = production.findIndex(v => v > 0);
