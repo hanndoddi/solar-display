@@ -8,12 +8,12 @@ function renderLogTable(log) {
 
   const recent = log.slice(-10).reverse();
 
-  let html = "<table><tr><th>Tími</th><th>Afl</th><th>Orka</th></tr>";
+  let html = "<table><tr><th>Tími</th><th>Afl (W)</th><th>Orka</th></tr>";
   recent.forEach(entry => {
     html += `<tr>
       <td>${new Date(entry.timestamp).toLocaleString('is-IS')}</td>
-      <td>${entry.power ?? ""}</td>
-      <td>${entry.energy ?? ""}</td>
+      <td>${entry.power ?? ''}</td>
+      <td>${entry.energy ?? ''}</td>
     </tr>`;
   });
   html += "</table>";
@@ -48,20 +48,19 @@ function renderChart(log) {
       labels,
       datasets: [{
         label: "Afl (W)",
-        data: values
+        data: values,
+        backgroundColor: "rgba(46, 204, 113, 0.7)",
+        borderColor: "rgba(46, 204, 113, 1)",
+        borderWidth: 1
       }]
     },
     options: {
       responsive: true,
       plugins: {
-        legend: {
-          display: false
-        }
+        legend: { display: false }
       },
       scales: {
-        y: {
-          beginAtZero: true
-        }
+        y: { beginAtZero: true }
       }
     }
   });
